@@ -215,6 +215,115 @@ The below image shows the average number of points the 3_3 Q agent scored playin
 ![3_3 average results quality](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/3_3%20Q%20agent%20vs%202%20theoretical%20agents%20with%20respect%20to%20quality%20of%20cards.png)
 
 
+### STATE 4
+Q table would be one where each variable of the state is each card in the deck described as, discarded, not in our hand or in our hand. We assumed that this state representation would create a Q table that is too big to fit in memory. We tested this and could not fit it into 16GB of RAM.
+
+
+### STATE 5
+We took the idea in STATE 3 and expanded on it by making more descriptive states. 
+
+***Q table for playing solo, first card***
+|Variable name|Possible variable values|
+|-------------|------------------------|
+|"Kral herc"| [0, 1, 2]|
+|"Dama herc"| [0, 1, 2]|
+|"Kaval herc"| [0, 1, 2]|
+|"Pob herc"| [0, 1, 2]|
+|"Platlci herc"| [0, 1]|
+|"Stevilo hercev v igri"| [0, 1, 2, 3, 4, 5, 6, 7, 8]|
+|"2. player skrt"| [0, 1]|
+|"3. player skrt"| [0, 1]|
+|"Kral karo"| [0, 1, 2]|
+|"Dama karo"| [0, 1, 2]|
+|"Kaval karo"| [0, 1, 2]|
+|"Pob karo"| [0, 1, 2]|
+|"Platlci karo"| [0, 1]|
+|"Stevilo kar v igri"| [0, 1, 2, 3, 4, 5, 6, 7, 8]|
+|"2. player skrt"| [0, 1]|
+|"3. player skrt"| [0, 1]|
+|"Kral pik"| [0, 1, 2]|
+|"Dama pik"| [0, 1, 2]|
+|"Kaval pik"| [0, 1, 2]|
+|"Pob pik"| [0, 1, 2]|
+|"Platlci pik"| [0, 1]|
+|"Stevilo pikov v igri"| [0, 1, 2, 3, 4, 5, 6, 7, 8]|
+|"2. player skrt"| [0, 1]|
+|"3. player skrt"| [0, 1]|
+|"Kral kriz"| [0, 1, 2]|
+|"Dama kriz"| [0, 1, 2]|
+|"Kaval kriz"| [0, 1, 2]|
+|"Pob kriz"| [0, 1, 2]|
+|"Platlci kriz"| [0, 1]|
+|"Stevilo krizev v igri"| [0, 1, 2, 3, 4, 5, 6, 7, 8]|
+|"2. player skrt"| [0, 1]|
+|"3. player skrt"| [0, 1]|
+|"škis"| [0, 1, 2]|
+|"mond"| [0, 1, 2]|
+|"pagat"| [0, 1, 2]|
+|"II - VII"| [0, 1, 2]|
+|"VIII - XV"| [0, 1, 2]|
+|"XVI - XX"| [0, 1, 2]|
+
+
+***Q table for playing solo, second card***
+|Variable name|Possible variable values|
+|-------------|------------------------|
+|"Jz skrt barve"| [0, 1]|
+|"Lahko poberem"| [0, 1]|
+|"Kralj barve stacka"| [0, 1, 2]|
+|"Dama barve stacka"| [0, 1, 2]|
+|"Kaval barve stacka"| [0, 1, 2]|
+|"Pob barve stacka"| [0, 1, 2]|
+|"Max platlc barve stacka"| [0, 1, 2]|
+|"top mid platlc barve stacka"| [0, 1, 2]|
+|"bot mid barve stacka"| [0, 1, 2]|
+|"Min platlc barve stacka"| [0, 1, 2]|
+|"koliko tarokov se v igri"| list(range(23))|
+|"zadnji player skrt barve"| [0, 1]|
+|"vrednost prve karte"| [0, 2, 3, 4, 5]|
+
+
+***Q tables for playing solo, third card***
+|Variable name|Possible variable values|
+|-------------|------------------------|
+|"vrednost prve karte"| [0, 2, 3, 4, 5]|
+|"vrednost druge karte"| [0, 2, 3, 4, 5]|
+|"Jz skrt barve"| [0, 1]|
+|"Lahko poberem"| [0, 1]|
+|"Kralj barve stacka"| [0, 1, 2]|
+|"Dama barve stacka"| [0, 1, 2]|
+|"Kaval barve stacka"| [0, 1, 2]|
+|"Pob barve stacka"| [0, 1, 2]|
+|"Max platlc barve stacka"| [0, 1, 2]|
+|"top mid platlc barve stacka"| [0, 1, 2]|
+|"bot mid barve stacka"| [0, 1, 2]|
+|"Min platlc barve stacka"| [0, 1, 2]|
+|"koliko tarokov se v igri"| list(range(23))|
+
+
+
+### ACTIONS 5
+Actions for playing the first card of the round: "herc kral", "herc dama", "herc kaval", "herc pob", "herc platlc", "karo kral", "karo dama",
+                    "karo kavla", "karo pob", "karo platlc", "pik kral", "pik dama", "pik kaval", "pik pob",
+                    "pik platlc", "kriz kral", "kriz dama", "kriz kaval", "kriz pob", "kriz platlc",
+                    "skis", "pagat", "mont", "nizki taroki", "srednji taroki", "visoki taroki"
+                    
+Actions for playing the second card of the round: "pass", "nalozi", "stegni", "all-in"   
+Actions for playing the third card of the round: "spusti", "poberi", "nalozi"
+
+
+### 5_5 Q AGENT
+
+The below image shows the average number of points the 5_5 Q agent scored playing solo versus two of the same theoretical agents.
+
+![5_5 average results](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/5_5%20Q%20agent%20playing%20vs%202%20theoretical%20agents.png)
+
+The below image shows the average number of points the 5_5 Q agent scored playing solo versus two of the same theoretical agents with respect to the quality of the cards.
+
+![5_5 average results quality](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/5_5%20Q%20agent%20vs%202%20theoretical%20agents%20with%20respect%20to%20quality%20of%20cards.png)
+
+
+
 
 
 
