@@ -12,7 +12,7 @@ The following agents are a sort of cheating agents because they have more inform
 - Locally worst worst agent (LWW): Plays the card that will produce the lowest possible score for that round, but also takes into account that the other two players will play in the same way
 - Locally best best agent (LBB): Plays the card that will produce the highest possible score for that round, but also takes into account that the other two players will play in the same way
 
-*The last two agents are basically MINMAX trees for each specific round*
+*The last two agents (LWW and LBB) are basically MINMAX trees for each specific round*
 
 *Another possible theoretical agent we could use to evaluate our trained models is another cheating agent which also knows every card of every hand, but always plays by the principles of the Nash equilibrium.*
 
