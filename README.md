@@ -174,7 +174,7 @@ We devised a total of 6 Q tables, one for each turn in a round (first, second, t
 |"mam poba te barve"| [0,1]|
 |"mam platlca te barve"| [0,1]|
 |"zadnji player skrt barve"| [0,1]|
-|"zadnji player skrt tarokov"| [0,1]]
+|"zadnji player skrt tarokov"| [0,1]|
 
 
 ***Q table for solo third card***
@@ -193,7 +193,16 @@ We devised a total of 6 Q tables, one for each turn in a round (first, second, t
 |"mam damo te barve"| [0,1]|
 |"mam cavala te barve"| [0,1]|
 |"mam poba te barve"| [0,1]|
-|"mam platlca te barve"| [0,1]]]
+|"mam platlca te barve"| [0,1]|
+
+
+***Q tables for duo play***
+Q tables for duo play are the same as for the solo play for each turn respectively. But they have two additional variables "partner za mano" and "partner pobere".
+
+
+### ACTIONS 3
+Actions for playing the first card of the round: "herc kral", "herc dama", "herc kaval", "herc pob", "herc platlc", "karo kral", "karo dama", "karo kavla", "karo pob", "karo platlc", "pik kral", "pik dama", "pik kaval", "pik pob", "pik platlc", "kriz kral", "kriz dama", "kriz kaval", "kriz pob", "kriz platlc", "nizek tarok", "srednji tarok", "visok tarok".
+Actions for playing the other two cards of the round: "pass", "poberi", "stegni se".
 
 
 
