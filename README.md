@@ -16,7 +16,7 @@ The following agents are a sort of cheating agents because they have more inform
 
 *Another possible theoretical agent we could use to evaluate our trained models is another cheating agent which also knows every card of every hand, but always plays by the principles of the Nash equilibrium.*
 
-To test our trained models, we first constructed a set of all playing agents and calculated all possible permutations of playing agents of length 3 (for 3 players). Then we played 1000 games for each permutation where we selected the solo player and the duo players randomly. This gave is a total of 792000 played games. In the processing of results we also introduced a rule for deciding which hands are average, good or great: 
+To test our trained models, we first constructed a set of all playing agents and calculated all possible permutations of playing agents of length 3 (for 3 players). Then we played 1000 games for each permutation where we selected the solo player and the duo players randomly. This gave is a total of 792000 played games. For starters testing was only done either over all played games or a single Q agent playing with two of the same theoretical agents. In the processing of results we also introduced a rule for deciding which hands are average, good or great: 
 
 ```
 def good_cards(hand):
@@ -49,7 +49,7 @@ def good_cards(hand):
             else:
                 return 0
 ```
-*This assessment of hand quality could also be done by taking the games where all three players played according to the same theoretical agent. The results of that game should tell us something about the quality of the hands. Perhaps even train a regression model?*
+*This assessment of hand quality could be improved (by much possibly?) by taking the games where all three players played according to the same theoretical agent. The results of those games should tell us something about the quality of the hands. Perhaps even train a regression model?*
 
 ## Q AGENTS
 So far we've tried to train 5 different Q Learning models. Each with a unique set of state representations and actions. From here on we will refer to them as X_Y Q Agents where X stands for the type of state representation and Y for the type of actions.
@@ -81,7 +81,7 @@ Two separate Q tables were created, one for playing the first card of the round 
 |"player3 nima vec tarokov"| [0,1]|
 
 ### ACTIONS 1
-Actions used for playing the first card of the round: "play king", "play queen", "play knight/jack", "play platlc", "play tarok".
+Actions used for playing the first card of the round: "play king", "play queen", "play knight/jack", "play platlc", "play tarok".  
 Actions used for playing the second and third card of the round: "win current stack", "pass current stack".
 
 ### 1_1 Q AGENT
@@ -92,6 +92,40 @@ The below image shows the average number of points the 1_1 Q agent scored playin
 The below image shows the average number of points the 1_1 Q agent scored playing solo versus two of the same theoretical agents with respect to the quality of the cards.
 
 ![1_1 average results quality](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/1_1%20Q%20agent%20vs%202%20theoretical%20agents%20with%20respect%20to%20quality%20of%20cards.png)
+
+### STATE 2
+Only one Q table was created for use in every situation of the game. The table below shows which variables were used to describe the state of the game.
+
+|Variable name|Possible variable values|
+|-------------|------------------------|
+|"herc kralj"| [0,1,2]|
+|"herc dama"| [0,1,2]|
+|"kara kralj"| [0,1,2]|
+|"kara dama"| [0,1,2]|
+|"pik kralj"| [0,1,2]|
+|"pik dama"| [0,1,2]|
+|"kriz kralj"| [0,1,2]|
+|"kriz dama"| [0,1,2]|
+|"mond"| [0,1,2]|
+|"skis"| [0,1,2]|
+|"pagat"| [0,1,2]|
+|"vrednost stacka"| [0,1,2]|
+|"player2 brez tarokov"| [0, 1]|
+|"player3 brez tarokov"| [0, 1]|
+
+### ACTIONS 2
+Playing each specific card in the deck presented a single action which in total gave us 52 possible actions. Of course not each action is possible in every state.
+
+
+### 2_2 Q AGENT
+The below image shows the average number of points the 2_2 Q agent scored playing solo versus two of the same theoretical agents.
+
+![2_2 average results](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/2_2%20Q%20agent%20playing%20vs%202%20theoretical%20agents.png)
+
+The below image shows the average number of points the 2_2 Q agent scored playing solo versus two of the same theoretical agents with respect to the quality of the cards.
+
+![2_2 average results quality](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/2_2%20Q%20agent%20vs%202%20theoretical%20agents%20with%20respect%20to%20quality%20of%20cards.png)
+
 
 
 
