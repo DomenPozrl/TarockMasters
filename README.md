@@ -86,9 +86,11 @@ Actions used for playing the second and third card of the round: "win current st
 
 ### 1_1 Q AGENT
 The below image shows the average number of points the 1_1 Q agent scored playing solo versus two of the same theoretical agents.
+
 ![1_1 average results](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/1_1%20Q%20agent%20playing%20vs%202%20theoretical%20agents.png)
 
 The below image shows the average number of points the 1_1 Q agent scored playing solo versus two of the same theoretical agents with respect to the quality of the cards.
+
 ![1_1 average results quality](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/1_1%20Q%20agent%20vs%202%20theoretical%20agents%20with%20respect%20to%20quality%20of%20cards.png)
 
 
