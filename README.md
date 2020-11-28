@@ -205,6 +205,15 @@ Actions for playing the first card of the round: "herc kral", "herc dama", "herc
 Actions for playing the other two cards of the round: "pass", "poberi", "stegni se".    
 
 
+### 3_3 Q AGENT
+The below image shows the average number of points the 3_3 Q agent scored playing solo versus two of the same theoretical agents.
+
+![3_3 average results](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/3_3%20Q%20agent%20playing%20vs%202%20theoretical%20agents.png)
+
+The below image shows the average number of points the 3_3 Q agent scored playing solo versus two of the same theoretical agents with respect to the quality of the cards.
+
+![3_3 average results quality](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/3_3%20Q%20agent%20vs%202%20theoretical%20agents%20with%20respect%20to%20quality%20of%20cards.png)
+
 
 
 
