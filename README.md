@@ -54,12 +54,12 @@ def good_cards(hand):
 *This assessment of hand quality could be improved (by much possibly?) by taking the games where all three players played according to the same theoretical agent. The results of those games should tell us something about the quality of the hands. Perhaps even train a regression model?*
 
 ## LEARNING
-We used the QLearning method to train our models with a slight but significant change. Due to the complexity of the game we do not add the reward of the new state to the reward for the action in the previous state. 
+We used the QLearning method to train our models with a slight but significant change. Due to the complexity of the game we do not add the score of the new state to the reward for the action in the previous state. 
 We devised two sets of rewarding functions: 
 One deals out rewards according to the points of won/lost stack and weighted by the number of actions we had available to play.
 The other takes the above mentioned score, and further increases/decreases it based on some domain knowledge.
 
-*There are a few possible improvements here. We could expand the second reward function with even more domain knowledge, but a far more interesting improvement would be to follow the classic QLearning method and add the reward of the new state to the action in the previous state. We would have to make sure to take from the correct Q table and change the reward from positive to negative (or vice-versa) when the situation called for it. Hopefully this would help the model to learn some long term strategies*
+*There are a few possible improvements here. We could expand the second reward function with even more domain knowledge, but a far more interesting improvement would be to follow the classic QLearning method and add the score of the new state to the action in the previous state. We would have to make sure to take from the correct Q table and change the reward from positive to negative (or vice-versa) when the situation called for it. Hopefully this would help the model to learn some long term strategies*
 
 
 ## Q AGENTS
