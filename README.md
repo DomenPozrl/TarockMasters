@@ -68,6 +68,7 @@ Two separate Q tables were created, one for playing the first card of the round 
 |"player2 nima vec tarokov"|[0,1]|
 |"player3 nima vec tarokov"|[0,1]|
 
+
 **Q table for playing the second and third card of the round**
 |Variable name|Possible variable values|
 |-------------|------------------------|
@@ -96,6 +97,7 @@ The below image shows the average number of points the 1_1 Q agent scored playin
 ### STATE 2
 Only one Q table was created for use in every situation of the game. The table below shows which variables were used to describe the state of the game.
 
+***Q table for every play***
 |Variable name|Possible variable values|
 |-------------|------------------------|
 |"herc kralj"| [0,1,2]|
@@ -125,6 +127,75 @@ The below image shows the average number of points the 2_2 Q agent scored playin
 The below image shows the average number of points the 2_2 Q agent scored playing solo versus two of the same theoretical agents with respect to the quality of the cards.
 
 ![2_2 average results quality](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/2_2%20Q%20agent%20vs%202%20theoretical%20agents%20with%20respect%20to%20quality%20of%20cards.png)
+
+### STATE 3
+We devised a total of 6 Q tables, one for each turn in a round (first, second, third) and all three with respect to whether the player is playing solo or in a duo.
+
+***Q table for playing solo, first card***
+|Variable name|Possible variable values|
+|-------------|------------------------|
+|"herc kralj"| [0,1,2]|
+|"herc dama"| [0, 1]|
+|"karo kralj"| [0,1,2]|
+|"karo dama"| [0, 1]|
+|"pik kralj"| [0,1,2]|
+|"pik dama"| [0, 1]|
+|"kriz kralj"| [0,1,2]|
+|"kriz dama"| [0, 1]|
+|"nizki taroki"| [0,1]|
+|"srednji taroki"| [0,1]|
+|"visoki taroki"| [0,1]|
+|"player2 skrt herc"| [0,1]|
+|"player2 skrt karo"| [0,1]|
+|"player2 skrt pik"| [0,1]|
+|"player2 skrt kriz"| [0,1]|
+|"player2 skrt taroki"| [0,1]|
+|"player3 skrt herc"| [0,1]|
+|"player3 skrt karo"| [0,1]|
+|"player3 skrt pik"| [0,1]|
+|"player3 skrt kriz"| [0,1]|
+|"player3 skrt taroki"| [0,1]|]
+
+
+***Q table for solo second card***
+|Variable name|Possible variable values|
+|-------------|------------------------|
+|"vrednost prve karte"| [0,2,3,4,5]|
+|"a je prva karta tarok"| [0,1]|
+|"a sm skrt te barve"| [0,1]|
+|"a lahko poberem z barvo"| [0,1]|
+|"a lahko poberem s tarokom"| [0,1]|
+|"nizki taroki"| [0,1]|
+|"srednji taroki"| [0,1]|
+|"visoki taroki"| [0,1]|
+|"mam kralja te barve"| [0,1]|
+|"mam damo te barve"| [0,1]|
+|"mam cavala te barve"| [0,1]|
+|"mam poba te barve"| [0,1]|
+|"mam platlca te barve"| [0,1]|
+|"zadnji player skrt barve"| [0,1]|
+|"zadnji player skrt tarokov"| [0,1]]
+
+
+***Q table for solo third card***
+|Variable name|Possible variable values|
+|-------------|------------------------|
+|"vrednost prve karte"| [0,2,3,4,5]|
+|"vrednost druge karte"| [0,2,3,4,5]|
+|"a je prva karta tarok"| [0,1]|
+|"a sm skrt te barve"| [0,1]|
+|"a lahko poberem z barvo"| [0,1]|
+|"a lahko poberem s tarokom"| [0,1]|
+|"nizki taroki"| [0,1]|
+|"srednji taroki"| [0,1]|
+|"visoki taroki"| [0,1]|
+|"mam kralja te barve"| [0,1]|
+|"mam damo te barve"| [0,1]|
+|"mam cavala te barve"| [0,1]|
+|"mam poba te barve"| [0,1]|
+|"mam platlca te barve"| [0,1]]]
+
+
 
 
 
