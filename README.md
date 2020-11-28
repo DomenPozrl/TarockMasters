@@ -16,7 +16,7 @@ The following agents are a sort of cheating agents because they have more inform
 
 *Another possible theoretical agent we could use to evaluate our trained models is another cheating agent which also knows every card of every hand, but always plays by the principles of the Nash equilibrium.*
 
-To test our trained models, we first constructed a set of all playing agents and calculated all possible permutations of playing agents of length 3 (for 3 players). Then we played 1000 games for each permutation where we selected the solo player and the duo players randomly. This gave is a total of 792000 played games. For starters testing was only done either over all played games or a single Q agent playing with two of the same theoretical agents. There is a lot more test we could run. This just scratches the surface.
+To test our trained models, we first constructed a set of all playing agents and calculated all possible permutations of playing agents of length 3 (for 3 players). Then we played 1000 games for each permutation where we selected the solo player and the duo players randomly. This gave us a total of 792000 played games. For starters testing was only done either over all played games or a single Q agent playing with two of the same theoretical agents. There is a lot more test we could run. This just scratches the surface.
 
 In the processing of results we also introduced a rule for deciding which hands are average, good or great: 
 
