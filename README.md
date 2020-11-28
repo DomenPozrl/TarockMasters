@@ -44,3 +44,11 @@ Two separate Q tables were created, one for playing the first card of the round 
 |"imam se tarokov"| [0,1]|
 |"player2 nima vec tarokov"| [0,1]|
 |"player3 nima vec tarokov"| [0,1]|
+
+### ACTIONS 1
+Actions used for playing the first card of the round: "play king", "play queen", "play knight/jack", "play platlc", "play tarok".
+Actions used for playing the second and third card of the round: "win current stack", "pass current stack".
+
+### 1_1 Q agent
+![1_1 average results](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/1_1%20Q%20agent%20playing%20vs%202%20theoretical%20agents.png)
+
