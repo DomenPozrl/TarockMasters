@@ -16,7 +16,9 @@ The following agents are a sort of cheating agents because they have more inform
 
 *Another possible theoretical agent we could use to evaluate our trained models is another cheating agent which also knows every card of every hand, but always plays by the principles of the Nash equilibrium.*
 
-To test our trained models, we first constructed a set of all playing agents and calculated all possible permutations of playing agents of length 3 (for 3 players). Then we played 1000 games for each permutation where we selected the solo player and the duo players randomly. This gave is a total of 792000 played games. For starters testing was only done either over all played games or a single Q agent playing with two of the same theoretical agents. In the processing of results we also introduced a rule for deciding which hands are average, good or great: 
+To test our trained models, we first constructed a set of all playing agents and calculated all possible permutations of playing agents of length 3 (for 3 players). Then we played 1000 games for each permutation where we selected the solo player and the duo players randomly. This gave is a total of 792000 played games. For starters testing was only done either over all played games or a single Q agent playing with two of the same theoretical agents. There is a lot more test we could run. This just scratches the surface.
+
+In the processing of results we also introduced a rule for deciding which hands are average, good or great: 
 
 ```
 def good_cards(hand):
@@ -50,6 +52,15 @@ def good_cards(hand):
                 return 0
 ```
 *This assessment of hand quality could be improved (by much possibly?) by taking the games where all three players played according to the same theoretical agent. The results of those games should tell us something about the quality of the hands. Perhaps even train a regression model?*
+
+## LEARNING
+We used the QLearning method to train our models with a slight but significant change. Due to the complexity of the game we do not add the reward of the new state to the reward for the action in the previous state. 
+We devised two sets of rewarding functions: 
+One deals out rewards according to the points of won/lost stack and weighted by the number of actions we had available to play.
+The other takes the above mentioned score, and further increases/decreases it based on some domain knowledge.
+
+*There are a few possible improvements here. We could expand the second reward function with even more domain knowledge, but a far more interesting improvement would be to follow the classic QLearning method and add the reward of the new state to the action in the previous state. We would have to make sure to take from the correct Q table and change the reward from positive to negative (or vice-versa) when the situation called for it. Hopefully this would help the model to learn some long term strategies*
+
 
 ## Q AGENTS
 So far we've tried to train 5 different Q Learning models. Each with a unique set of state representations and actions. From here on we will refer to them as X_Y Q Agents where X stands for the type of state representation and Y for the type of actions.
@@ -301,6 +312,9 @@ We took the idea in STATE 3 and expanded on it by making more descriptive states
 |"koliko tarokov se v igri"| list(range(23))|
 
 
+***Q tables for playing duo***  
+We constructed the Q tables for playing duo the same way we did in STATE 3.
+
 
 ### ACTIONS 5
 Actions for playing the first card of the round: "herc kral", "herc dama", "herc kaval", "herc pob", "herc platlc", "karo kral", "karo dama",
@@ -321,6 +335,12 @@ The below image shows the average number of points the 5_5 Q agent scored playin
 The below image shows the average number of points the 5_5 Q agent scored playing solo versus two of the same theoretical agents with respect to the quality of the cards.
 
 ![5_5 average results quality](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/5_5%20Q%20agent%20vs%202%20theoretical%20agents%20with%20respect%20to%20quality%20of%20cards.png)
+
+## FINAL RESULTS
+Finally, we present the average points across all games played by every mentioned model as a solo player and as a duo player
+
+![solo_players](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/Average%20number%20of%20points%20for%20solo%20play.png)
+![duo_players](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/Average%20number%20of%20points%20for%20duo%20play.png)
 
 
 
