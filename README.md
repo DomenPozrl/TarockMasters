@@ -61,6 +61,7 @@ We devised two sets of rewarding functions:
 One deals out rewards according to the points of won/lost stack and weighted by the number of actions we had available to play.
 The other takes the above mentioned score, and further increases/decreases it based on some domain knowledge.
 
+For these initial test we only used the models trained with the first reward function. We still have to run tests for the second reward function but the models are already trained.  
 *There are a few possible improvements here. We could expand the second reward function with even more domain knowledge, but a far more interesting improvement would be to follow the classic QLearning method and add the score of the new state to the action in the previous state. We would have to make sure to take from the correct Q table and change the reward from positive to negative (or vice-versa) when the situation called for it. Hopefully this would help the model to learn some long term strategies*
 
 
@@ -338,14 +339,17 @@ The below image shows the average number of points the 5_5 Q agent scored playin
 
 ![5_5 average results quality](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/5_5%20Q%20agent%20vs%202%20theoretical%20agents%20with%20respect%20to%20quality%20of%20cards.png)
 
-## FINAL RESULTS
+## OVERALL RESULTS
 Finally, we present the average points across all games played by every mentioned model as a solo player and as a duo player
 
 ![solo_players](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/Average%20number%20of%20points%20for%20solo%20play.png)
 ![duo_players](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/Average%20number%20of%20points%20for%20duo%20play.png)
 
 
+## FUTURE PLANS
+We already mentioned many possible improvements for every part (written in italics). The main focus should for now be to test and train all of the models with new and proposed reward functions. There is not much more experimentation, we can do when it comes to state representation, but perhaps minor changes can lead to drastic performance increases. There is still room for improvement when it comes to discretization of actions. Perhaps try the state 3 or 5 in combinations with actions 2. A great test would also be to deal exactly the same cards to each agent and see how differently they play and what are their strengths and weaknesses.
 
+Then we would like to move one to different reinforcement learning approaches starting with Deep Q learning.
 
 
 
