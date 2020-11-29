@@ -62,6 +62,7 @@ One deals out rewards according to the points of won/lost stack and weighted by 
 The other takes the above mentioned score, and further increases/decreases it based on some domain knowledge.
 
 For these initial test we only used the models trained with the first reward function. We still have to run tests for the second reward function but the models are already trained.  
+
 *There are a few possible improvements here. We could expand the second reward function with even more domain knowledge, but a far more interesting improvement would be to follow the classic QLearning method and add the score of the new state to the action in the previous state. We would have to make sure to take from the correct Q table and change the reward from positive to negative (or vice-versa) when the situation called for it. Hopefully this would help the model to learn some long term strategies*
 
 
