@@ -350,7 +350,7 @@ Finally, we present the average points across all games played by every mentione
 ## FUTURE PLANS
 We already mentioned many possible improvements for every part (written in italics). The main focus should for now be to test and train all of the models with new and proposed reward functions. There is not much more experimentation, we can do when it comes to state representation, but perhaps minor changes can lead to drastic performance increases. There is still room for improvement when it comes to discretization of actions. Perhaps try the state 3 or 5 in combinations with actions 2. A great test would also be to deal exactly the same cards to each agent and see how differently they play and what are their strengths and weaknesses.
 
-Then we would like to move on to different reinforcement learning approaches starting with Deep Q learning.
+Then we would like to move on to different reinforcement learning approaches, starting with Deep Q learning.
 
 
 
