@@ -3,9 +3,9 @@
 ## LEARNING
 We used Q-learning to train our models. Because of the complexity of the game in terms of playing order we started with Q-learning that did not add the estimate of the optimal future value (qf1). We then added this functionality but taking into consideration that we should substract (rather than add) the estimated optimal future value if the next player was our opponent (qf2). The logic here is very straightforward. If our action is good in the current scope but sets our opponent up for a really good action then our action should still be considered bad. We also combined these 2 approaches with 3 different reward functions:
 
-1.) The reward is equal to the points in the current stack but its weighted by the number of actions the agent was able to take (rwf1)//
-2.) We take the reward from point 1. and add some domain knowledge (rwf2)//
-3.) We play the entire game and then whether the player won or lost the game we reward/punish every action taken by the player (rwf3)//
+1.) The reward is equal to the points in the current stack but its weighted by the number of actions the agent was able to take (rwf1)\\
+2.) We take the reward from point 1. and add some domain knowledge (rwf2)\\
+3.) We play the entire game and then whether the player won or lost the game we reward/punish every action taken by the player (rwf3)\\
 
 This gives us a total of 6 different learning approaches. In combination with 4 different state, action pairs (described in detail below) this gives us a total of 24 trained models.
 
