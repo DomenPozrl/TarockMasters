@@ -1,11 +1,11 @@
 # TarockMasters
 
 ## LEARNING
-We used Q-learning to train our models. Because of the complexity of the game in terms of playing order we started with Q-learning that did not add the estimate of the optimal future value (qf1). We then added this functionality but taking into consideration that we should substract (rather than add) the estimated optimal future value if the next player was our opponent (qf2). The logic here is very straightforward. If our action is good in the current scope but sets our opponent up for a really good action then our action should still be considered bad. We also combined these 2 approaches with 3 different reward functions:
+We used Q-learning to train our models. Because of the complexity of the game in terms of playing order we started with Q-learning that did not add the estimate of the optimal future value (1). We then added this functionality but taking into consideration that we should substract (rather than add) the estimated optimal future value if the next player was our opponent (2). The logic here is very straightforward. If our action is good in the current scope but sets our opponent up for a really good action then our action should still be considered bad. We also combined these 2 approaches with 3 different reward functions:
 
-1.) The reward is equal to the points in the current stack but its weighted by the number of actions the agent was able to take (rwf1)\
-2.) We take the reward from point 1. and add some domain knowledge (rwf2)\
-3.) We play the entire game and then whether the player won or lost the game we reward/punish every action taken by the player (rwf3)
+1.) The reward is equal to the points in the current stack but its weighted by the number of actions the agent was able to take (1)\
+2.) We take the reward from point 1. and add some domain knowledge (2)\
+3.) We play the entire game and then whether the player won or lost the game we reward/punish every action taken by the player (3)
 
 
 This gives us a total of 6 different learning approaches. In combination with 4 different state, action pairs (described in detail below) this gives us a total of 24 trained models.
@@ -64,9 +64,48 @@ def good_cards(hand):
 
 ## RESULTS
 ### PLAYING WITH THEORETICAL AGENTS
+The labels on the x-axis represent the different variations of the models. X_Y where X represents the reward function used in training and Y represents the Q-learning approach used.
+
+## 1_1 Q AGENT
+The first plot shows average points all variations of 1_1 agent scored versus every theoretical agents.
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%201_1%20playing%20vs%20milestone%20agents%20-%20Copy.png)
+
+This plot shows the difference in average points for all variations of 1_1 agent when playing alone and when playing in a duo
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%201_1%20playing%20vs%20milestone%20agents%20solo%20duo%20split.png)
+
+This plot shows the difference in average points for all variations of 1_1 agent with respect to the quality of the cards
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%201_1%20playing%20vs%20milestone%20agents%20with%20respect%20to%20quality%20of%20cards.png)
+
+## 2_2 Q AGENT
+The first plot shows average points all variations of 2_2 agent scored versus every theoretical agents.
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%202_2%20playing%20vs%20milestone%20agents.png)
+
+This plot shows the difference in average points for all variations of 2_2 agent when playing alone and when playing in a duo
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%202_2%20playing%20vs%20milestone%20agents%20solo%20duo%20split.png)
+
+This plot shows the difference in average points for all variations of 2_2 agent with respect to the quality of the cards
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%202_2%20playing%20vs%20milestone%20agents%20with%20respect%20to%20quality%20of%20cards.png)
+
+## 3_3 Q AGENT
+The first plot shows average points all variations of 3_3 agent scored versus every theoretical agents.
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%203_3%20playing%20vs%20milestone%20agents.png)
+
+This plot shows the difference in average points for all variations of 3_3 agent when playing alone and when playing in a duo
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%203_3%20playing%20vs%20milestone%20agents%20solo%20duo%20split.png)
+
+This plot shows the difference in average points for all variations of 3_3 agent with respect to the quality of the cards
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%203_3%20playing%20vs%20milestone%20agents%20with%20respect%20to%20quality%20of%20cards.png)
+
+## 5_5 Q AGENT
+The first plot shows average points all variations of 5_5 agent scored versus every theoretical agents.
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%205_5%20playing%20vs%20milestone%20agents.png)
+
+This plot shows the difference in average points for all variations of 5_5 agent when playing alone and when playing in a duo
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%205_5%20playing%20vs%20milestone%20agents%20solo%20duo%20split.png)
+
+This plot shows the difference in average points for all variations of 5_5 agent with respect to the quality of the cards
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%205_5%20playing%20vs%20milestone%20agents%20with%20respect%20to%20quality%20of%20cards.png)
+
 ## 1_1 Q AGENT
 ### STATE 1
 Two separate Q tables were created, one for playing the first card of the round and another for playing the second and third card of the round. The tables below show each variable used in state representations as well as all the possible values of that variable. We will not explain every single variable in detail since most are pretty self explanatory. The main idea was to discretize the game state to a certain extent.
@@ -301,13 +340,3 @@ Actions for playing the first card of the round: "herc kral", "herc dama", "herc
                     
 Actions for playing the second card of the round: "pass", "nalozi", "stegni", "all-in"   
 Actions for playing the third card of the round: "spusti", "poberi", "nalozi"
-
-
-
-## FUTURE PLANS
-We already mentioned many possible improvements for every part (written in italics). The main focus should for now be to test and train all of the models with new and proposed reward functions. There is not much more experimentation, we can do when it comes to state representation, but perhaps minor changes can lead to drastic performance increases. There is still room for improvement when it comes to discretization of actions. Perhaps try the state 3 or 5 in combinations with actions 2. A great test would also be to deal exactly the same cards to each agent and see how differently they play and what are their strengths and weaknesses.
-
-Then we would like to move on to different reinforcement learning approaches, starting with Deep Q learning.
-
-
-
