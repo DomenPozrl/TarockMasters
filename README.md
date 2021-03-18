@@ -115,6 +115,15 @@ These plots compare average points of all trained models when playing with diffe
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20models%20playing%20with%202%20LB.png)
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20models%20playing%20with%202%20LBB.png)
 
+### PLAYING VS SILICIJASTI TAROKIST
+Taking into account all of the test presented above we chose 1 representative model for each state, action pair and played 100 games versus the program called Silicijasti tarokist. As shown in the plots below this is not nearly enough games. Some models didn't even get a game, where their cards were considered "great" or "good".
+
+This plot shows overall average points per game.
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/best%20performing%20models%20vs%20Silicijasti%20tarokist.png)
+
+This plot shows overall average points per game with respect to quality of cards.
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/best%20performing%20models%20vs%20Silicijasti%20tarokist%20with%20respect%20to%20card%20quality.png)
+
 ## 1_1 Q AGENT
 ### STATE 1
 Two separate Q tables were created, one for playing the first card of the round and another for playing the second and third card of the round. The tables below show each variable used in state representations as well as all the possible values of that variable. We will not explain every single variable in detail since most are pretty self explanatory. The main idea was to discretize the game state to a certain extent.
