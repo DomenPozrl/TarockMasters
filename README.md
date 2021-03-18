@@ -64,7 +64,7 @@ def good_cards(hand):
 
 ## RESULTS
 ### PLAYING WITH THEORETICAL AGENTS
-
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%201_1%20playing%20vs%20milestone%20agents.png
 
 ## 1_1 Q AGENT
 ### STATE 1
