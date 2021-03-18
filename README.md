@@ -65,7 +65,8 @@ def good_cards(hand):
 ## RESULTS
 ### PLAYING WITH THEORETICAL AGENTS
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%201_1%20playing%20vs%20milestone%20agents%20-%20Copy.png)
-
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%201_1%20playing%20vs%20milestone%20agents%20solo%20duo%20split.png)
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%201_1%20playing%20vs%20milestone%20agents%20with%20respect%20to%20quality%20of%20cards.png)
 ## 1_1 Q AGENT
 ### STATE 1
 Two separate Q tables were created, one for playing the first card of the round and another for playing the second and third card of the round. The tables below show each variable used in state representations as well as all the possible values of that variable. We will not explain every single variable in detail since most are pretty self explanatory. The main idea was to discretize the game state to a certain extent.
