@@ -105,6 +105,15 @@ This plot shows the difference in average points for all variations of 5_5 agent
 
 This plot shows the difference in average points for all variations of 5_5 agent with respect to the quality of the cards
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%205_5%20playing%20vs%20milestone%20agents%20with%20respect%20to%20quality%20of%20cards.png)
+#### OVERALL RESULTS
+The labels on the x axis are in the form of X_Y_Z_W where X_Y represents which q agent played while Z_W represent which reward function adn Q-learning approach were used.
+These plots compare average points of all trained models when playing with different theoretical agents.
+
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20models%20playing%20with%202%20LWW.png)
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20models%20playing%20with%202%20LW.png)
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20models%20playing%20with%202%20random.png)
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20models%20playing%20with%202%20LB.png)
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20models%20playing%20with%202%20LBB.png)
 
 ## 1_1 Q AGENT
 ### STATE 1
