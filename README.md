@@ -66,6 +66,8 @@ def good_cards(hand):
 ### PLAYING WITH THEORETICAL AGENTS
 The labels on the x-axis represent the different variations of the models. X_Y where X represents the reward function used in training and Y represents the Q-learning approach used.
 
+It is worth noting, that on average there are almost 8 points in the talon.
+
 #### 1_1 Q AGENT
 The first plot shows average points all variations of 1_1 agent scored versus every theoretical agents.
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%201_1%20playing%20vs%20milestone%20agents%20-%20Copy.png)
