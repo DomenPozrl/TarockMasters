@@ -116,7 +116,7 @@ These plots compare average points of all trained models when playing with diffe
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20models%20playing%20with%202%20LBB.png)
 
 ### PLAYING VS SILICIJASTI TAROKIST
-Taking into account all of the tests presented above, we chose 1 best performing model for each state, action pair and played 100 games versus the program called Silicijasti tarokist. As shown in the plots below this is not nearly enough games. Some models didn't even get a game, where their cards were considered "great" or "good".
+Taking into account all of the tests presented above, we chose 1 best performing model for each state, action pair and played 100 games versus the program called Silicijasti tarokist. As shown in the plots below this is not nearly enough games. Some models didn't even get a single game where their cards were considered "great" or "good".
 
 This plot shows overall average points per game.
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/best%20performing%20models%20vs%20Silicijasti%20tarokist.png)
