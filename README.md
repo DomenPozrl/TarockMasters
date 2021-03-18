@@ -66,7 +66,7 @@ def good_cards(hand):
 ### PLAYING WITH THEORETICAL AGENTS
 The labels on the x-axis represent the different variations of the models. X_Y where X represents the reward function used in training and Y represents the Q-learning approach used.
 
-## 1_1 Q AGENT
+#### 1_1 Q AGENT
 The first plot shows average points all variations of 1_1 agent scored versus every theoretical agents.
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%201_1%20playing%20vs%20milestone%20agents%20-%20Copy.png)
 
@@ -76,7 +76,7 @@ This plot shows the difference in average points for all variations of 1_1 agent
 This plot shows the difference in average points for all variations of 1_1 agent with respect to the quality of the cards
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%201_1%20playing%20vs%20milestone%20agents%20with%20respect%20to%20quality%20of%20cards.png)
 
-## 2_2 Q AGENT
+#### 2_2 Q AGENT
 The first plot shows average points all variations of 2_2 agent scored versus every theoretical agents.
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%202_2%20playing%20vs%20milestone%20agents.png)
 
@@ -86,7 +86,7 @@ This plot shows the difference in average points for all variations of 2_2 agent
 This plot shows the difference in average points for all variations of 2_2 agent with respect to the quality of the cards
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%202_2%20playing%20vs%20milestone%20agents%20with%20respect%20to%20quality%20of%20cards.png)
 
-## 3_3 Q AGENT
+#### 3_3 Q AGENT
 The first plot shows average points all variations of 3_3 agent scored versus every theoretical agents.
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%203_3%20playing%20vs%20milestone%20agents.png)
 
@@ -96,7 +96,7 @@ This plot shows the difference in average points for all variations of 3_3 agent
 This plot shows the difference in average points for all variations of 3_3 agent with respect to the quality of the cards
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%203_3%20playing%20vs%20milestone%20agents%20with%20respect%20to%20quality%20of%20cards.png)
 
-## 5_5 Q AGENT
+#### 5_5 Q AGENT
 The first plot shows average points all variations of 5_5 agent scored versus every theoretical agents.
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%205_5%20playing%20vs%20milestone%20agents.png)
 
