@@ -5,7 +5,8 @@ We used Q-learning to train our models. Because of the complexity of the game in
 
 1.) The reward is equal to the points in the current stack but its weighted by the number of actions the agent was able to take (rwf1)\
 2.) We take the reward from point 1. and add some domain knowledge (rwf2)\
-3.) We play the entire game and then whether the player won or lost the game we reward/punish every action taken by the player (rwf3)\
+3.) We play the entire game and then whether the player won or lost the game we reward/punish every action taken by the player (rwf3)
+
 
 This gives us a total of 6 different learning approaches. In combination with 4 different state, action pairs (described in detail below) this gives us a total of 24 trained models.
 
