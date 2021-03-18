@@ -1,9 +1,9 @@
 # TarockMasters
 
 ## LEARNING
-We used Q-learning to train our models. Because of the complexity of the game in terms of playing order we started with Q-learning that did not add the estimate of the optimal future value (1). We then added this functionality but taking into consideration that we should substract (rather than add) the estimated optimal future value if the next player was our opponent (2). The logic here is very straightforward. If our action is good in the current scope but sets our opponent up for a really good action then our action should still be considered bad. We also combined these 2 approaches with 3 different reward functions:
+We used Q-learning to train our models. Because of the complexity of the game in terms of playing order, we started with Q-learning that did not add the estimate of the optimal future value (1). We then added this functionality, but taking into consideration that we should subtract (rather than add) the estimated optimal future value if the next player was our opponent (2). The logic here is very straightforward. If our action is good in the current scope, but sets our opponent up for a really good action, then our action should still be considered bad. We also combined these 2 approaches with 3 different reward functions:
 
-1.) The reward is equal to the points in the current stack but its weighted by the number of actions the agent was able to take (1)\
+1.) The reward is equal to the points in the current stack, but it is weighted by the number of actions the agent was able to take (1)\
 2.) We take the reward from point 1. and add some domain knowledge (2)\
 3.) We play the entire game and then whether the player won or lost the game we reward/punish every action taken by the player (3)
 
@@ -15,19 +15,19 @@ For purposes of evaluation of our trained models we devised a few theoretical ag
 
 - Random agent (random): Makes decisions randomly.
 
-The following agents are a sort of cheating agents because they have more information than usually available to the player. They know every card in every hand instead of just their own. This of course is not possible in real world play, but results achieved with such agents present a great milestone for our trained models.
+The following agents are a sort of cheating agents because they have more information than usually available to the player. They know every card in every hand instead of just their own. This of course is not possible in real world play, but the results achieved with such agents present a great milestone for our trained models.
 
 - Locally worst agent (LW): Plays the card that will on average produce the lowest possible score for that round.
 - Locally best agent (LB): Plays the card that will on average produce the highest possible score for that round.
-- Locally worst worst agent (LWW): Plays the card that will produce the lowest possible score for that round but also takes into account that the other two players will play in the same way
-- Locally best best agent (LBB): Plays the card that will produce the highest possible score for that round but also takes into account that the other two players will play in the same way
+- Locally worst worst agent (LWW): Plays the card that will produce the lowest possible score for that round, but also takes into account that the other two players will play in the same way
+- Locally best best agent (LBB): Plays the card that will produce the highest possible score for that round, but also takes into account that the other two players will play in the same way
 
 ## TESTING
 There are 2 ways we can look at our Tarock playing program. Either as a normal player playing against other programs or as a program playing versus other players. The distinction is that in the case where we treat our program as a player, we use its logic to replace only 1 of the 3 players while in the other case we use our logic to replace 2 players. So far we've treated the program as a normal player so we ran all the test in this way. 
 
 We tested all 24 models versus all 5 theoretical agents. Each model played 15000 games versus each agent. We chose 15000 games because that should be enough games to cover all possible qualities of cards multiple times. We also tested our model versus the program called Silicijasti tarokist but so far only chose a single model for each state, action pair and played 100 games with it. 50 games where we play in a duo and 50 games where we play alone.
 
-We do not perform any bidding or talon exchanging as of yet. We randomly choose between "Naprej" and "Solo brez". We do however account for card quality when processing the results using the function below:
+We do not perform any bidding or talon exchanging as of yet. We randomly choose between "Naprej" and "Solo brez". We do, however account for card quality when processing the results using the function below:
 
 ```
 def good_cards(hand):
@@ -106,7 +106,7 @@ This plot shows the difference in average points for all variations of 5_5 agent
 This plot shows the difference in average points for all variations of 5_5 agent with respect to the quality of the cards
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%205_5%20playing%20vs%20milestone%20agents%20with%20respect%20to%20quality%20of%20cards.png)
 #### OVERALL RESULTS
-The labels on the x axis are in the form of X_Y_Z_W where X_Y represents which q agent played while Z_W represent which reward function adn Q-learning approach were used.
+The labels on the x axis are in the form of X_Y_Z_W where X_Y represents which q agent played while Z_W represent which reward function and Q-learning approach were used.
 These plots compare average points of all trained models when playing with different theoretical agents.
 
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20models%20playing%20with%202%20LWW.png)
@@ -116,7 +116,7 @@ These plots compare average points of all trained models when playing with diffe
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20models%20playing%20with%202%20LBB.png)
 
 ### PLAYING VS SILICIJASTI TAROKIST
-Taking into account all of the test presented above we chose 1 representative model for each state, action pair and played 100 games versus the program called Silicijasti tarokist. As shown in the plots below this is not nearly enough games. Some models didn't even get a game, where their cards were considered "great" or "good".
+Taking into account all of the tests presented above, we chose 1 best performing model for each state, action pair and played 100 games versus the program called Silicijasti tarokist. As shown in the plots below this is not nearly enough games. Some models didn't even get a game, where their cards were considered "great" or "good".
 
 This plot shows overall average points per game.
 ![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/best%20performing%20models%20vs%20Silicijasti%20tarokist.png)
