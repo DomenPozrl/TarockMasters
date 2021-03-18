@@ -1,5 +1,15 @@
 # TarockMasters
 
+## LEARNING
+We used Q-learning to train our models. Because of the complexity of the game in terms of playing order we started with Q-learning that did not add the estimate of the optimal future value (qf1). We then added this functionality but taking into consideration that we should substract (rather than add) the estimated optimal future value if the next player was our opponent (qf2). The logic here is very straightforward. If our action is good in the current scope but sets our opponent up for a really good action then our action should still be considered bad. We also combined these 2 approaches with 3 different reward functions:
+
+1.) The reward is equal to the points in the current stack but its weighted by the number of actions the agent was able to take (rwf1)\
+2.) We take the reward from point 1. and add some domain knowledge (rwf2)\
+3.) We play the entire game and then whether the player won or lost the game we reward/punish every action taken by the player (rwf3)
+
+
+This gives us a total of 6 different learning approaches. In combination with 4 different state, action pairs (described in detail below) this gives us a total of 24 trained models.
+
 ## THEORETICAL AGENTS
 For purposes of evaluation of our trained models we devised a few theoretical agents.
 
@@ -7,20 +17,17 @@ For purposes of evaluation of our trained models we devised a few theoretical ag
 
 The following agents are a sort of cheating agents because they have more information than usually available to the player. They know every card in every hand instead of just their own. This of course is not possible in real world play, but results achieved with such agents present a great milestone for our trained models.
 
-- Locally worst agent (LW): Plays the card that will, on average, produce the lowest possible score for that round.
-- Locally best agent (LB): Plays the card that will, on average, produce the highest possible score for that round.
-- Locally worst worst agent (LWW): Plays the card that will produce the lowest possible score for that round, but also takes into account that the other two players will play in the same way
-- Locally best best agent (LBB): Plays the card that will produce the highest possible score for that round, but also takes into account that the other two players will play in the same way
+- Locally worst agent (LW): Plays the card that will on average produce the lowest possible score for that round.
+- Locally best agent (LB): Plays the card that will on average produce the highest possible score for that round.
+- Locally worst worst agent (LWW): Plays the card that will produce the lowest possible score for that round but also takes into account that the other two players will play in the same way
+- Locally best best agent (LBB): Plays the card that will produce the highest possible score for that round but also takes into account that the other two players will play in the same way
 
-*The last two agents (LWW and LBB) are basically MINMAX trees for each specific round*
+## TESTING
+There are 2 ways we can look at our Tarock playing program. Either as a normal player playing against other programs or as a program playing versus other players. The distinction is that in the case where we treat our program as a player, we use its logic to replace only 1 of the 3 players while in the other case we use our logic to replace 2 players. So far we've treated the program as a normal player so we ran all the test in this way. 
 
-*Another possible theoretical agent we could use to evaluate our trained models is another cheating agent which also knows every card of every hand, but always plays by the principles of the Nash equilibrium.*
+We tested all 24 models versus all 5 theoretical agents. Each model played 15000 games versus each agent. We chose 15000 games because that should be enough games to cover all possible qualities of cards multiple times. We also tested our model versus the program called Silicijasti tarokist but so far only chose a single model for each state, action pair and played 100 games with it. 50 games where we play in a duo and 50 games where we play alone.
 
-To test our trained models, we first constructed a set of all playing agents and calculated all possible permutations of playing agents of length 3 (for 3 players). Then we played 1000 games for each permutation where we selected the solo player and the duo players randomly. This gave us a total of 792000 played games. For starters testing was only done either over all played games or a single Q agent playing with two of the same theoretical agents. There is a lot more test we could run. This just scratches the surface.
-
-*Of course we should also do testing versus other Tarock playing applications and real life play.*
-
-In the processing of results we also introduced a rule for deciding which hands are average, good or great: 
+We do not perform any bidding or talon exchanging as of yet. We randomly choose between "Naprej" and "Solo brez". We do however account for card quality when processing the results using the function below:
 
 ```
 def good_cards(hand):
@@ -55,20 +62,11 @@ def good_cards(hand):
 ```
 *This assessment of hand quality could be improved (by much possibly?) by taking the games where all three players played according to the same theoretical agent. The results of those games should tell us something about the quality of the hands. Perhaps even train a regression model?*
 
-## LEARNING
-We used the QLearning method to train our models with a slight but significant change. Due to the complexity of the game we do not add the score of the new state to the reward for the action in the previous state. 
-We devised two sets of rewarding functions: 
-One deals out rewards according to the points of won/lost stack and weighted by the number of actions we had available to play.
-The other takes the above mentioned score, and further increases/decreases it based on some domain knowledge.
+## RESULTS
+### PLAYING WITH THEORETICAL AGENTS
+![alt text](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/All%20variations%20of%20model%201_1%20playing%20vs%20milestone%20agents.png)
 
-For these initial test we only used the models trained with the first reward function. We still have to run tests for the second reward function but the models are already trained.  
-
-*There are a few possible improvements here. We could expand the second reward function with even more domain knowledge, but a far more interesting improvement would be to follow the classic QLearning method and add the score of the new state to the action in the previous state. We would have to make sure to take from the correct Q table and change the reward from positive to negative (or vice-versa) when the situation called for it. Hopefully this would help the model to learn some long term strategies*
-
-
-## Q AGENTS
-So far we've tried to train 5 different Q Learning models. Each with a unique set of state representations and actions. From here on we will refer to them as X_Y Q Agents where X stands for the type of state representation and Y for the type of actions.
-
+## 1_1 Q AGENT
 ### STATE 1
 Two separate Q tables were created, one for playing the first card of the round and another for playing the second and third card of the round. The tables below show each variable used in state representations as well as all the possible values of that variable. We will not explain every single variable in detail since most are pretty self explanatory. The main idea was to discretize the game state to a certain extent.
 
@@ -100,14 +98,8 @@ Two separate Q tables were created, one for playing the first card of the round 
 Actions used for playing the first card of the round: "play king", "play queen", "play knight/jack", "play platlc", "play tarok".  
 Actions used for playing the second and third card of the round: "win current stack", "pass current stack".
 
-### 1_1 Q AGENT
-The below image shows the average number of points the 1_1 Q agent scored playing solo versus two of the same theoretical agents.
 
-![1_1 average results](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/1_1%20Q%20agent%20playing%20vs%202%20theoretical%20agents.png)
-
-The below image shows the average number of points the 1_1 Q agent scored playing solo versus two of the same theoretical agents with respect to the quality of the cards.
-
-![1_1 average results quality](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/1_1%20Q%20agent%20vs%202%20theoretical%20agents%20with%20respect%20to%20quality%20of%20cards.png)
+## 2_2 Q AGENT
 
 ### STATE 2
 Only one Q table was created for use in every situation of the game. The table below shows which variables were used to describe the state of the game.
@@ -134,15 +126,8 @@ Only one Q table was created for use in every situation of the game. The table b
 Playing each specific card in the deck presented a single action which in total gave us 52 possible actions. Of course not each action is possible in every state.
 
 
-### 2_2 Q AGENT
-The below image shows the average number of points the 2_2 Q agent scored playing solo versus two of the same theoretical agents.
 
-![2_2 average results](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/2_2%20Q%20agent%20playing%20vs%202%20theoretical%20agents.png)
-
-The below image shows the average number of points the 2_2 Q agent scored playing solo versus two of the same theoretical agents with respect to the quality of the cards.
-
-![2_2 average results quality](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/2_2%20Q%20agent%20vs%202%20theoretical%20agents%20with%20respect%20to%20quality%20of%20cards.png)
-
+## 3_3 Q AGENT
 ### STATE 3
 We devised a total of 6 Q tables, one for each turn in a round (first, second, third) and all three with respect to whether the player is playing solo or in a duo.
 
@@ -219,20 +204,7 @@ Q tables for duo play are the same as for the solo play for each turn respective
 Actions for playing the first card of the round: "herc kral", "herc dama", "herc kaval", "herc pob", "herc platlc", "karo kral", "karo dama", "karo kavla", "karo pob", "karo platlc", "pik kral", "pik dama", "pik kaval", "pik pob", "pik platlc", "kriz kral", "kriz dama", "kriz kaval", "kriz pob", "kriz platlc", "nizek tarok", "srednji tarok", "visok tarok".    
 Actions for playing the other two cards of the round: "pass", "poberi", "stegni se".    
 
-
-### 3_3 Q AGENT
-The below image shows the average number of points the 3_3 Q agent scored playing solo versus two of the same theoretical agents.
-
-![3_3 average results](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/3_3%20Q%20agent%20playing%20vs%202%20theoretical%20agents.png)
-
-The below image shows the average number of points the 3_3 Q agent scored playing solo versus two of the same theoretical agents with respect to the quality of the cards.
-
-![3_3 average results quality](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/3_3%20Q%20agent%20vs%202%20theoretical%20agents%20with%20respect%20to%20quality%20of%20cards.png)
-
-
-### STATE 4
-Q table would be one where each variable of the state is each card in the deck described as, discarded, not in our hand or in our hand. We assumed that this state representation would create a Q table that is too big to fit in memory. We tested this and could not fit it into 16GB of RAM.
-
+## 5_5 Q AGENT
 
 ### STATE 5
 We took the idea in STATE 3 and expanded on it by making more descriptive states. 
@@ -329,22 +301,6 @@ Actions for playing the first card of the round: "herc kral", "herc dama", "herc
 Actions for playing the second card of the round: "pass", "nalozi", "stegni", "all-in"   
 Actions for playing the third card of the round: "spusti", "poberi", "nalozi"
 
-
-### 5_5 Q AGENT
-
-The below image shows the average number of points the 5_5 Q agent scored playing solo versus two of the same theoretical agents.
-
-![5_5 average results](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/5_5%20Q%20agent%20playing%20vs%202%20theoretical%20agents.png)
-
-The below image shows the average number of points the 5_5 Q agent scored playing solo versus two of the same theoretical agents with respect to the quality of the cards.
-
-![5_5 average results quality](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/5_5%20Q%20agent%20vs%202%20theoretical%20agents%20with%20respect%20to%20quality%20of%20cards.png)
-
-## OVERALL RESULTS
-Finally, we present the average points across all games played by every mentioned model as a solo player and as a duo player
-
-![solo_players](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/Average%20number%20of%20points%20for%20solo%20play.png)
-![duo_players](https://github.com/DomenPozrl/TarockMasters/blob/main/Plots/Average%20number%20of%20points%20for%20duo%20play.png)
 
 
 ## FUTURE PLANS
